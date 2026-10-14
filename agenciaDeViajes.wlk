@@ -2,9 +2,11 @@ class PackDeViaje {
     const duracionEnDias
     const precioBase
     const coordinadorACargo
+    const beneficiosEspeciales
     method duracionEnDias() { return duracionEnDias }
     method precioBase() { return precioBase }
     method coordinadorACargo() { return Coordinador }
+    method beneficiosEspeciales() { return BeneficioEspecial }
     method soloDospacks() { if (not PackNacional or PackInternacional) self.error("no se puede crear un pack noexistente") }
     method valorFinalDePack() { return precioBase + BeneficioEspecial.costo()}
 }
