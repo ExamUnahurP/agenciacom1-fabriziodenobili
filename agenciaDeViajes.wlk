@@ -1,3 +1,4 @@
+//Problemas con el testeo: no me deja hacer el testeo; pasando a seguir escribiendo codigo
 class PackDeViaje {
     const duracionEnDias
     const precioBase
@@ -14,7 +15,7 @@ class PackNacional inherits PackDeViaje {
     const provinciaDestino
     const listaDeActividades = []
     method actividadesDeLaProvincia(actividad) { listaDeActividades.add(actividad) }
-}/*
+}
 class PackInternacional inherits PackDeViaje {
     const paisDeDestino
     const cantidadDeEscalas
@@ -25,7 +26,7 @@ class PackInternacional inherits PackDeViaje {
     override method valorFinalDePack() {
         super() - valorFinalDePack() * 0.2
     }
-}*/
+}
 class Coordinador {
     const cantidadDeViajes
     const estaMotivado
@@ -34,6 +35,9 @@ class Coordinador {
     method cambiarRol(rolNuevo) {
         if (rolNuevo not "guia" or "Asistente logistico" or "Acompañante") self.error("No existe ese rol")
         else rol = rolNuevo
+    }
+    method altamenteCalificado() {
+        cantidadDeViajes < 20
     }
 }
 class BeneficioEspecial {
