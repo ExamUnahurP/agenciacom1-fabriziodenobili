@@ -6,7 +6,7 @@ class PackDeViaje {
     method precioBase() { return precioBase }
     method coordinadorACargo() { return Coordinador }
     method soloDospacks() { if (not PackNacional or PackInternacional) self.error("no se puede crear un pack noexistente") }
-    method valorFinalDePack() { return precioBase + BeneficioEspecial.tipo().sum({tipo => BeneficioEspecial.costo()})}
+    method valorFinalDePack() { return precioBase + }
 }
 class PackNacional inherits PackDeViaje {
     const provinciaDestino
@@ -25,18 +25,18 @@ class Coordinador {
     const cantidadDeViajes
     const estaMotivado
     const aniosDeExperiencia
-    var rol //puede ser guia, asistente logistico, o acompañante
-    const rol = ["Guia", "Asistente logistico", "Acompañante"]
+    var rol //"Guia", "Asistente logistico", "Acompañante"
     method cambiarRol(rolNuevo) {
         if (rolNuevo not "guia" or "Asistente logistico" or "Acompañante") self.error("No existe ese rol")
         else rol = rolNuevo
     }
 }
 class BeneficioEspecial {
-    const tipo = ["Traslados privados", "Accesos a salas VIP", "Seguros adicionales"]
+    const tipo = []
     const costo
     const estaVigente
     method costo() { return costo }
     method estaVigente() { return estaVigente }
+    method agregarBeneficio(beneficioTipo) { tipo.add(beneficioTipo) }
     method cantidadDeBeneficio() { return tipo.size() }
 }
