@@ -14,7 +14,7 @@ class PackNacional inherits PackDeViaje {
     const provinciaDestino
     const listaDeActividades = []
     method actividadesDeLaProvincia(actividad) { listaDeActividades.add(actividad) }
-}
+}/*
 class PackInternacional inherits PackDeViaje {
     const paisDeDestino
     const cantidadDeEscalas
@@ -25,7 +25,7 @@ class PackInternacional inherits PackDeViaje {
     override method valorFinalDePack() {
         super() - valorFinalDePack() * 0.2
     }
-}
+}*/
 class Coordinador {
     const cantidadDeViajes
     const estaMotivado
