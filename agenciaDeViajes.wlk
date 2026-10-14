@@ -6,7 +6,7 @@ class PackDeViaje {
     method precioBase() { return precioBase }
     method coordinadorACargo() { return Coordinador }
     method soloDospacks() { if (not PackNacional or PackInternacional) self.error("no se puede crear un pack noexistente") }
-    method valorFinalDePack() { return precioBase + }
+    method valorFinalDePack() { return precioBase + BeneficioEspecial.costo()}
 }
 class PackNacional inherits PackDeViaje {
     const provinciaDestino
@@ -20,6 +20,9 @@ class PackInternacional inherits PackDeViaje {
     method paisDeDestino() { return paisDeDestino }
     method cantidadDeEscalas() { return cantidadDeEscalas }
     method esLugarDeInteres() { return esLugarDeInteres }
+    override method valorFinalDePack() {
+        super() - valorFinalDePack() * 0.2
+    }
 }
 class Coordinador {
     const cantidadDeViajes
@@ -33,9 +36,8 @@ class Coordinador {
 }
 class BeneficioEspecial {
     const tipo = []
-    const costo
     const estaVigente
-    method costo() { return costo }
+    method costo() { return cantidadDeBeneficio().filter({tipo => tipo.estaVigente() = true}) }
     method estaVigente() { return estaVigente }
     method agregarBeneficio(beneficioTipo) { tipo.add(beneficioTipo) }
     method cantidadDeBeneficio() { return tipo.size() }
