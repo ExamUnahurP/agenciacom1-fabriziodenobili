@@ -1,8 +1,9 @@
-import agenciaDeViajes.*
 
 describe "Calculo del valor final de un pack" {
     test "Un pack nacional sin beneficios vigentes devuelve el precio base" {
-        const viajeArgentino = new PackNacional(duracionEnDias = 5, precioBase = 2000, beneficiosEspeciales = sinBeneficios, coordinadorACargo = juan, provinciaDestino = "Buenos Aires")
-        const juan = new Coordinador()
+        const viajeArgentino = new PackNacional(duracionEnDias = 5, precioBase = 2000, beneficiosEspeciales = sinBeneficios, coordinadorACargo = juan, provinciaDestino = "Buenos Aires", listaDeActividades = ["mirar palomas", "comer asado"])
+        const juan = new Coordinador(cantidadDeViajes = 1, estaMotivado = true, aniosDeExperiencia = 1, rol = "guia")
+        const sinBeneficios = new BeneficioEspecial(tipo = ["Acceso a salas VIP"], estaVigente = false)
+        assert.equals(2000, viajeArgentino.valorFinalDePack())
     }
 }
